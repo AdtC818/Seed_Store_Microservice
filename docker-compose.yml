@@ -1,0 +1,148 @@
+services:
+  eureka-server:
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: agrodb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  seed-service:
+    build:
+      context: ./seeds-service
+      dockerfile: Dockerfile
+    container_name: seed-service
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/agrodb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-network
+    restart: on-failure
+
+  sowing-service:
+    build:
+      context: ./sowing-service
+      dockerfile: Dockerfile
+    container_name: sowing-service
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/agrodb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-network
+    restart: on-failure
+
+  seedlings-service:
+    build:
+      context: ./seedlings-service
+      dockerfile: Dockerfile
+    container_name: seedlings-service
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/agrodb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-network
+    restart: on-failure
+
+  contacts-service:
+    build:
+      context: ./contacts-service
+      dockerfile: Dockerfile
+    container_name: contacts-service
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/agrodb?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_APPLICATION_JSON: "{\"eureka\":{\"client\":{\"service-url\":{\"defaultZone\":\"http://eureka-server:8761/eureka\"}}}}"
+    ports:
+      - "8084:8084"
+    networks:
+      - microservices-network
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend:latest
+    networks:
+    - microservices-network
+    environment:
+    - REACT_APP_CONTACTS_API=http://contacts-service:8080
+    - REACT_APP_SEEDS_API=http://seed-service:8080
+    - REACT_APP_SOWING_API=http://sowing-service:8080
+    depends_on:
+    - eureka-server
+    - contacts-service
+    - seed-service
+    - sowing-service
+    ports:
+    - "3000:80"
+
+
+networks:
+  microservices-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

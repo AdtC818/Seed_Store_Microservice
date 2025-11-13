@@ -1,5 +1,7 @@
 package com.improsvita.seeds_service.repository;
+import com.improsvita.seeds_service.model.Seed;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class SeedRepository {
+public interface SeedRepository extends JpaRepository<Seed, Long> {
     
 }
