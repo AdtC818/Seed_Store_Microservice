@@ -1,0 +1,29 @@
+.modal-card.delete {
+  border-top: 4px solid #D63031;
+}
+
+.delete-title {
+  color: #D63031;
+  font-weight: 700;
+}
+
+.delete-text {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-delete {
+  flex: 1;
+  background: #D63031;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #a52323;
+}

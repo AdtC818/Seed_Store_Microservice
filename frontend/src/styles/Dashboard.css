@@ -1,0 +1,33 @@
+.dashboard-container {
+  width: 100%;
+  padding: 40px 60px;
+}
+
+/* Título */
+.dashboard-container h1 {
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Párrafo ANCHO COMPLETO, igual que tu imagen */
+.dashboard-container .text {
+  color: #222;
+  font-size: 18px;
+  line-height: 1.7;
+  width: 100%;     /* ahora ocupa todo el ancho disponible */
+  max-width: none; /* elimina el límite para que se expanda más */
+  text-align: justify;
+  margin-bottom: 40px;
+}
+
+/* Logo centrado y más grande */
+.dashboard-logo {
+  width: 70%;         /* más grande */
+  max-width: 700px;   /* aumenta el tamaño máximo */
+  height: auto;
+  display: block;
+  margin: 50px auto 0 auto; /* centrado TOTAL */
+}
