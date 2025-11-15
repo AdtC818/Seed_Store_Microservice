@@ -1,0 +1,139 @@
+/* -------- CONTENEDOR PRINCIPAL -------- */
+.sowing-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 25px 40px;
+  background: #f4f4f4; /* fondo igual al screenshot */
+  min-height: 100vh;
+}
+
+/* -------- BARRA SUPERIOR -------- */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Caja de búsqueda */
+.search-box {
+  background: white;
+  border-radius: 12px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 260px; /* igual al ejemplo */
+  border: 1px solid #ddd;
+}
+
+.search-box img {
+  width: 18px;
+  opacity: 0.7;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Botones del toolbar */
+.toolbar-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.icon-btn img {
+  width: 28px;
+  opacity: 0.9;
+}
+
+/* -------- LISTA -------- */
+.sowing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Tarjeta de item */
+.sowing-item {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e3e3e3;
+}
+
+/* Info del item */
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-icon {
+  width: 35px; /* iconos más grandes igual al screenshot */
+}
+
+/* Acciones */
+.item-actions {
+  display: flex;
+  gap: 18px;
+}
+
+.item-actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.item-actions img {
+  width: 23px;
+  opacity: 0.85;
+}
+
+/* -------- HEADER GLOBAL (PARTE SUPERIOR) -------- */
+.header {
+  background: white;
+  padding: 12px 30px;
+  height: 58px; /* igual a screenshot */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-img {
+  width: 40px;
+}
+
+.exit-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.content {
+  padding: 25px 40px;
+  overflow-y: auto;
+}

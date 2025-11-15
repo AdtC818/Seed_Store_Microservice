@@ -1,0 +1,18 @@
+.modal-card.edit {
+  border-top: 4px solid #2E86DE;
+}
+
+.btn-edit {
+  flex: 1;
+  background: #2E86DE;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background: #2167ab;
+}

@@ -1,38 +1,42 @@
 package com.improsvita.sowing_service.controller;
 
 import com.improsvita.sowing_service.dto.SowingDTO;
-import com.improsvita.sowing_service.model.Sowing;
 import com.improsvita.sowing_service.service.SowingService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/sowings")
-@RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class SowingController {
 
-    private final SowingService sowingService;
+    @Autowired
+    private SowingService service;
 
     @PostMapping
-    public ResponseEntity<Sowing> registerSowing(@RequestBody SowingDTO dto) {
-        return ResponseEntity.ok(sowingService.registerSowing(dto));
-    }
-
-    @GetMapping("/active")
-    public ResponseEntity<List<Sowing>> getActiveSowings() {
-        return ResponseEntity.ok(sowingService.getActiveSowings());
+    public SowingDTO create(@RequestBody SowingDTO dto) {
+        return service.create(dto);
     }
 
     @GetMapping
-    public ResponseEntity<List<Sowing>> getAllSowings() {
-        return ResponseEntity.ok(sowingService.getAllSowings());
+    public List<SowingDTO> getAll() {
+        return service.getAll();
     }
 
-    @PatchMapping("/{id}/status")
-    public ResponseEntity<Sowing> updateStatus(@PathVariable Long id, @RequestParam String status) {
-        return ResponseEntity.of(sowingService.updateSowingStatus(id, status));
+    @GetMapping("/{id}")
+    public SowingDTO getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @PutMapping("/{id}")
+    public SowingDTO update(@PathVariable Long id, @RequestBody SowingDTO dto) {
+        return service.update(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 }

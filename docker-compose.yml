@@ -93,7 +93,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: root
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
     ports:
-      - "8083:8083"
+      - "8084:8084"
     networks:
       - microservices-network
     restart: on-failure
@@ -115,7 +115,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_APPLICATION_JSON: "{\"eureka\":{\"client\":{\"service-url\":{\"defaultZone\":\"http://eureka-server:8761/eureka\"}}}}"
     ports:
-      - "8084:8084"
+      - "8083:8083"
     networks:
       - microservices-network
     restart: on-failure
@@ -128,9 +128,9 @@ services:
     networks:
     - microservices-network
     environment:
-    - REACT_APP_CONTACTS_API=http://contacts-service:8080
-    - REACT_APP_SEEDS_API=http://seed-service:8080
-    - REACT_APP_SOWING_API=http://sowing-service:8080
+    - REACT_APP_CONTACTS_API=http://contacts-service:8083
+    - REACT_APP_SEEDS_API=http://seed-service:8081
+    - REACT_APP_SOWING_API=http://sowing-service:8082
     depends_on:
     - eureka-server
     - contacts-service

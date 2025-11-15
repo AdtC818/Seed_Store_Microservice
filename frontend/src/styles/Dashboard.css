@@ -1,25 +1,33 @@
 .dashboard-container {
-  text-align: center;
-  padding: 40px;
+  width: 100%;
+  padding: 40px 60px;
 }
 
+/* Título */
 .dashboard-container h1 {
   color: #444;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: left;
 }
 
-.dashboard-container p {
+/* Párrafo ANCHO COMPLETO, igual que tu imagen */
+.dashboard-container .text {
   color: #222;
-  font-size: 16px;
-  line-height: 1.6;
-  width: 70%;
-  margin: 0 auto 30px auto;
+  font-size: 18px;
+  line-height: 1.7;
+  width: 100%;     /* ahora ocupa todo el ancho disponible */
+  max-width: none; /* elimina el límite para que se expanda más */
   text-align: justify;
+  margin-bottom: 40px;
 }
 
+/* Logo centrado y más grande */
 .dashboard-logo {
-  width: 60%;
-  max-width: 600px;
+  width: 70%;         /* más grande */
+  max-width: 700px;   /* aumenta el tamaño máximo */
   height: auto;
-  margin-top: 40px;
+  display: block;
+  margin: 50px auto 0 auto; /* centrado TOTAL */
 }
