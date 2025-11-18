@@ -1,3 +1,123 @@
+/* ----- Fondo ----- */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ----- Caja principal ----- */
+.modal-box.pretty {
+  background: white;
+  padding: 26px;
+  border-radius: 18px;
+  width: 92%;
+  max-width: 460px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+  animation: popup 0.25s ease;
+}
+
+@keyframes popup {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ----- Contenedor de detalles ----- */
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ----- Cada fila de información ----- */
+.detail-item {
+  background: #f7f7f7;
+  padding: 12px 14px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item.description-block {
+  padding: 16px;
+}
+
+.label {
+  font-size: 12px;
+  color: #666;
+}
+
+.value {
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.value.strong {
+  font-weight: bold;
+}
+
+/* ----- Estados coloridos ----- */
+.state-tag {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Ciclo: Sembrada */
+.state-sembrada {
+  background: #d6f5d6;
+  color: #257a25;
+}
+
+/* Ciclo: En crecimiento */
+.state-en-crecimiento {
+  background: #dff0ff;
+  color: #0d4c91;
+}
+
+/* Ciclo: Lista para cosecha */
+.state-lista-para-cosecha {
+  background: #fff4c4;
+  color: #9c7b00;
+}
+
+/* Ciclo: Finalizada */
+.state-finalizada {
+  background: #f0f0f0;
+  color: #666;
+}
+
+/* ----- Botón ----- */
+.btn-close {
+  margin-top: 12px;
+  background: #666;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.btn-close:hover {
+  background: #4d4d4d;
+}
+
 .modal-bg {
   position: fixed;
   top: 0;
@@ -36,3 +156,75 @@
 .btn-save { background: #26A65B; color:white; padding: 10px; border-radius: 8px; border: none; cursor:pointer; }
 .btn-delete { background: #D63031; color:white; padding: 10px; border-radius: 8px; border: none; cursor:pointer; }
 .btn-cancel { background: #9b9b9b; color:white; padding: 10px; border-radius: 8px; border: none; cursor:pointer; }
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  width: 92%;
+  max-width: 450px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-box h2 {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  background: #f6f6f6;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.detail span {
+  color: #555;
+}
+
+.state {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Colores según estado */
+.state.disponible {
+  background: #d4f7d4;
+  color: #2d7a2d;
+}
+
+.state.apartada {
+  background: #ffe3bf;
+  color: #b05a00;
+}
+
+.state.fumigada {
+  background: #d7e8ff;
+  color: #084c9e;
+}
+
+.btn-cancel {
+  background: #9b9b9b;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

@@ -86,22 +86,7 @@ export default function ViewContact({ contact, onClose }) {
               <p className="observations-text">{contact.observations}</p>
             </div>
           )}
-
-          <div className="detail-section">
-            <h3>Información del Sistema</h3>
-            
-            <div className="detail-item">
-              <span className="detail-label">Fecha de Registro:</span>
-              <span className="detail-value">{formatDate(contact.createdAt)}</span>
-            </div>
-
-            <div className="detail-item">
-              <span className="detail-label">Última Actualización:</span>
-              <span className="detail-value">{formatDate(contact.updatedAt)}</span>
-            </div>
-          </div>
         </div>
-
         <div className="modal-actions">
           <button type="button" onClick={onClose} className="btn-cancel">
             Cerrar
