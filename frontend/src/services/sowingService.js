@@ -14,6 +14,9 @@ export const getActiveSowings = () => {
 export const registerSowing = (data) => {
   return axios.post(SOWINGS_ENDPOINT, data);
 };
+export const updateSowing = (id, data) => {
+  return axios.put(`${SOWINGS_ENDPOINT}/${id}`, data);
+};
 
 export const updateSowingStatus = (id, status) => {
   return axios.patch(`${SOWINGS_ENDPOINT}/${id}/status?status=${status}`);

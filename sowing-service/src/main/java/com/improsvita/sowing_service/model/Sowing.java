@@ -17,11 +17,15 @@ public class Sowing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String seedName;        // tipo de semilla
-    private Integer quantity;       // cantidad de semillas usadas
-    private LocalDate startDate;    // fecha de inicio
-    private LocalDate harvestDate;  // fecha estimada de cosecha
-    private String status;          // Sembrada, En crecimiento, Lista para cosecha, Finalizada
-    private String observations;    // observaciones adicionales
+    private Long seedId;           // <-- ID de la semilla en seed-service
+    private String seedName;       // nombre para mostrar (copia del seed service)
+    private Integer quantity;      // cantidad de semillas usadas
+    private LocalDate startDate;   // fecha de inicio
+    private LocalDate harvestDate; // fecha estimada de cosecha
+    private String status;         // Sembrada, En crecimiento, Lista para cosecha, Finalizada
+    private String availabilityStatus; 
+    private String observations;   // observaciones adicionales
     private Integer fumigationFrequency; // frecuencia de fumigación
+    private Long contactId;      // ID del contacto remoto
+    private String contactName;  // Guardamos una copia del nombre del contacto
 }

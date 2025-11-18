@@ -1,140 +1,136 @@
-/* -------- CONTENEDOR PRINCIPAL -------- */
+/* --- CONTENEDOR PRINCIPAL --- */
 .seeds-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 25px 40px; /* más amplio, igual al screenshot */
-  background: #f4f4f4; /* fondo gris claro exacto */
+  padding: 25px 40px;
+  background: #f4f4f4;
   min-height: 100vh;
-  box-sizing: border-box;
 }
 
-/* -------- BARRA SUPERIOR -------- */
+/* --- TOOLBAR --- */
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px; /* más separación */
+  margin-bottom: 25px;
 }
 
-/* Caja de búsqueda */
+/* Buscar */
 .search-box {
-  background: white;          /* fondo blanco */
-  border-radius: 12px;        /* bordes suaves */
-  padding: 8px 14px;
   display: flex;
   align-items: center;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 12px;
   gap: 10px;
-  width: 260px;               /* ancho igual al screenshot */
-  border: 1px solid #ddd;     /* borde suave */
-}
-
-.search-box img {
-  width: 18px;
-  opacity: 0.7;
+  border: 1px solid #e0e0e0;
 }
 
 .search-box input {
   border: none;
-  background: transparent;
   outline: none;
-  font-size: 15px;
-}
-
-/* Botones del toolbar */
-.toolbar-actions {
-  display: flex;
-  gap: 20px; /* separación mayor */
-}
-
-.icon-btn {
   background: transparent;
-  border: none;
+  font-size: 14px;
+}
+
+/* Botón simple con ícono */
+.icon-btn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  padding: 6px;
+  transition: 0.2s;
 }
 
-.icon-btn img {
-  width: 28px;
-  opacity: 0.9;
+.icon-btn:hover {
+  background: #ececec;
 }
 
-/* -------- LISTA -------- */
+/* --- LISTA --- */
 .seeds-list {
   display: flex;
   flex-direction: column;
-  gap: 14px; /* espacio mayor entre tarjetas */
+  gap: 16px;
 }
 
-/* Tarjeta de item */
+/* Mensaje vacío */
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #777;
+}
+
+/* --- ÍTEM DE SEMILLA --- */
 .seeds-item {
-  background: #f7f7f7;            /* fondo igual al ejemplo */
-  border-radius: 10px;
-  padding: 14px 20px;
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e3e3e3;      /* borde suave */
+  transition: 0.2s;
 }
 
-/* Info del item */
+.seeds-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+}
+
+/* IZQUIERDA: icono + texto */
 .item-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .item-icon {
-  width: 35px; /* iconos más grandes */
+  width: 50px;
+  height: 50px;
 }
 
-/* Acciones */
+/* Detalles */
+.seed-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.seed-name {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.seed-meta {
+  font-size: 13px;
+  color: #666;
+}
+
+/* DERECHA: acciones */
 .item-actions {
-  display: flex;
-  gap: 18px;
-}
-
-.item-actions button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.item-actions img {
-  width: 23px;
-  opacity: 0.85;
-}
-
-/* -------- HEADER GLOBAL (PARTE SUPERIOR) -------- */
-.header {
-  background: white;
-  padding: 12px 30px;
-  height: 58px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #dcdcdc;
-}
-
-.user-info {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.user-img {
-  width: 40px;
-}
-
-.exit-btn {
-  background: transparent;
+.item-actions button {
+  background: none;
   border: none;
-  font-size: 16px;
   cursor: pointer;
-  opacity: 0.7;
+  padding: 6px;
+  border-radius: 8px;
+  transition: 0.15s;
 }
 
-.content {
-  padding: 25px 40px;
-  overflow-y: auto;
+.item-actions button:hover {
+  background: #f0f0f0;
+}
+
+.item-actions img {
+  width: 22px;
 }
